@@ -85,8 +85,8 @@ flowchart LR
 │   │       ├── PanelHeading.tsx     # Cabeçalho reutilizável de painéis
 │   │       ├── SensorFreshness.tsx  # Atualidade da telemetria
 │   │       ├── SettingsModal.tsx    # Setpoints, agenda e injeção de falhas
-│   │       ├── SidebarNavigation.tsx # Navegação dos módulos
-│   │       └── WeatherWidget.tsx   # Seleção de local e condições atuais
+│   │       ├── SidebarNavigation.tsx    # Navegação dos módulos
+│   │       └── WeatherWidget.tsx        # Seleção de local e condições atuais
 │   ├── hooks/
 │   │   ├── useBmsSimulation.ts     # Ciclo da simulação e sirene
 │   │   └── useWeather.ts           # Atualização periódica do clima
@@ -190,11 +190,11 @@ O widget requer conexão com a internet. Se a consulta falhar, o painel sinaliza
 
 ## 🚧 Limites da simulação
 
-- O transporte ativo é `MockBmsTransport`; não há conexão com PLC físico, broker MQTT ou serviço de backend configurado.
+- O dashboard usa `MockBmsTransport` por padrão. A stack opcional MQTT/PostgreSQL, iniciada via Docker Compose, recebe e persiste mensagens publicadas por dispositivos; o painel ainda não usa um adaptador MQTT nem se conecta a PLC físico.
 - Bombas, portões, elevadores, incêndio, energia e HVAC usam dados simulados para demonstrar a interface e as regras de operação.
 - O interlock de incêndio libera os portões e inicia o recall dos elevadores ao térreo. As cabines permanecem com as portas abertas até a normalização de todas as zonas.
 - A simulação e a agenda autônoma executam no navegador e param quando a página deixa de rodar.
-- Eventos e preferências são armazenados localmente no navegador; não há historiador central nem sincronização entre operadores.
+- Eventos gerados pela simulação e preferências ficam no navegador, sem sincronização entre operadores. O historiador opcional persiste mensagens recebidas pelo coletor MQTT, mas não os eventos da simulação local.
 
 ---
 
