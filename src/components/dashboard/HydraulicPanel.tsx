@@ -34,10 +34,10 @@ function TankGraphic({ level, flowing }: { level: number; flowing: boolean }) {
       <text x="78" y="199" textAnchor="middle" fill="#94a3b8" fontSize="10" letterSpacing="1.1">RESERVATÓRIO A</text>
       <path d={suctionPipe} className="hydraulic-pipe-shell" />
       <path d={suctionPipe} className={`hydraulic-pipe-flow ${flowClass}`} />
-      <circle cx="225" cy="154" r="22" fill="var(--bms-pump-bg)" stroke={flowing ? "#06b6d4" : "#475569"} strokeWidth="1.5" />
-      <path d="M 216 145 L 234 154 L 216 163 Z" fill={flowing ? "#7dd3fc" : "#64748b"} />
       <path d={dischargePipe} className="hydraulic-pipe-shell" />
       <path d={dischargePipe} className={`hydraulic-pipe-flow ${flowClass}`} />
+      <circle cx="225" cy="154" r="22" fill="var(--bms-pump-bg)" stroke={flowing ? "#06b6d4" : "#475569"} strokeWidth="1.5" />
+      <path d="M 220 145 L 235 154 L 220 163 Z" fill={flowing ? "#7dd3fc" : "#64748b"} />
       <path d="M 319 69 L 332 78 L 319 87" fill="none" stroke="#64748b" strokeWidth="1.5" />
       <text x="224" y="190" textAnchor="middle" fill="#94a3b8" fontSize="10" letterSpacing="1">BOMBA P-01</text>
       <text x="302" y="62" textAnchor="middle" fill="#64748b" fontSize="9" letterSpacing="0.8">REDE PREDIAL</text>
