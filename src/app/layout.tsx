@@ -1,11 +1,38 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { getSiteUrl } from "@/utils/siteUrl";
 import "./globals.css";
 
+const description = "Dashboard BMS para supervisão predial, simulação de equipamentos e gestão de alarmes, energia, climatização e utilidades.";
+const previewEnvironment = process.env.VERCEL_ENV === "preview";
+
 export const metadata: Metadata = {
-  title: "Sentinel BMS · Building Control System",
-  description: "Sentinel BMS: painel de supervisão predial em tempo real para utilidades, segurança e energia.",
+  metadataBase: getSiteUrl(),
+  title: {
+    default: "Sentinel BMS | Supervisão Predial",
+    template: "%s | Sentinel BMS",
+  },
+  description,
+  applicationName: "Sentinel BMS",
+  authors: [{ name: "Alberto Luiz" }],
+  creator: "Alberto Luiz",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: "Sentinel BMS",
+    title: "Sentinel BMS | Supervisão Predial",
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sentinel BMS | Supervisão Predial",
+    description,
+    images: [{ url: "/opengraph-image", alt: "Sentinel BMS: supervisão e simulação predial" }],
+  },
+  robots: { index: !previewEnvironment, follow: !previewEnvironment },
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
