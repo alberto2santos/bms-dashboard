@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.github
+coverage
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+ml/__pycache__
+ml/.venv
+ml/models
